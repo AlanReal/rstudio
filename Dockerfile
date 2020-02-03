@@ -3,285 +3,320 @@ FROM rocker/tidyverse
 RUN mkdir -p /home/rstudio/.rstudio
 RUN chmod 0777 /home/rstudio/.rstudio
 
+RUN apt-get update -qq && apt-get -y --no-install-recommends install \
+    --reinstall build-essential \
+    r-cran-stanheaders \
+    g++ \
+    gcc \    
+    cargo \
+    libudunits2-dev \
+    libjpeg-dev \
+    libsodium-dev \
+    libmagick++-dev \
+    librsvg2-dev \
+    libv8-dev \
+    default-jdk \
+    coinor-libcgl-dev \
+    coinor-libsymphony-dev \
+    coinor-libsymphony-doc \
+    libxt-dev \
+    tk-dev \
+    libglpk-dev \
+    libgeos-dev \
+    libproj-dev \
+    libfreetype6-dev \
+    libopenmpi-dev \
+    libgdal-dev \
+    && R CMD javareconf
+
 RUN install2.r --error \
     --deps TRUE \
-    DALEX \
+#    BBmisc \ 
+#    DALEX \
+#    FactoMineR \ 
+#    ISLR \ 
+#    Icens \ 
+#    KernSmooth \ 
+#    MASS \ 
+#    MLEcens \ 
+    Matrix \ 
+    MatrixModels \ 
+    ModelMetrics \ 
+#    ParamHelpers \ 
+#    PortfolioOptim \ 
+#    RcppEigen \ 
+    Rsymphony \ 
+#    Rtsne \ 
+#    SQUAREM \ 
+#    SparseM \ 
+#    TeachingDemos \ 
     abind \ 
     ade4 \ 
     amap \ 
-    askpass \ 
-    assertthat \ 
-    backports \ 
-    base \ 
-    base64enc \ 
+#    base \ 
     bayesSurv \ 
-    BBmisc \ 
-    BH \ 
-    bit \ 
-    bit64 \ 
-    bitops \ 
-    blob \ 
     boot \ 
     brazilmaps-master \ 
-    brew \ 
-    broom \ 
-    callr \ 
     car \ 
-    carData \ 
+#    carData \ 
     caret \ 
-    caTools \ 
-    cellranger \ 
-    checkmate \ 
-    chron \ 
-    class \ 
-    classInt \ 
-    cli \ 
-    clipr \ 
-    clisymbols \ 
-    cluster \ 
+#    checkmate \ 
+#    chron \ 
+#    class \ 
+#    classInt \ 
+#    cluster \ 
     coda \ 
     codetools \ 
-    colorspace \ 
-    commonmark \ 
     compiler \ 
-    config \ 
-    covr \ 
-    cowplot \ 
-    crayon \ 
-    crosstalk \ 
-    curl \ 
-    data.table \ 
-    datasets \ 
-    DBI \ 
-    dbplyr \ 
-    dendextend \ 
-    desc \ 
-    devtools \ 
-    digest \ 
-    dplyr \ 
-    DT \ 
-    e1071 \ 
-    ellipse \ 
-    ellipsis \ 
-    evaluate \ 
+#    config \ 
+#    cowplot \ 
+#    datasets \ 
+#    dendextend \ 
+#    e1071 \ 
+#    ellipse \ 
     factoextra \ 
-    FactoMineR \ 
-    fansi \ 
-    farver \ 
     fastDummies \ 
     fastGHQuad \ 
-    fastmap \ 
     fastmatch \ 
     ff \ 
     flashClust \ 
     flextable \ 
-    fontBitstreamVera \ 
-    fontLiberation \ 
-    fontquiver \ 
-    forcats \ 
+#    fontBitstreamVera \ 
+#    fontLiberation \ 
+#    fontquiver \ 
     foreach \ 
     foreign \ 
     forge \ 
-    fs \ 
-    gdata \ 
-    gdtools \ 
-    generics \ 
-    ggforce \ 
-    ggiraph \ 
-    ggiraphExtra \ 
-    ggplot2 \ 
-    ggpubr \ 
-    ggrepel \ 
-    ggsci \ 
-    ggsignif \ 
-    ggthemes \ 
-    gh \ 
-    git2r \ 
-    glue \ 
-    gower \ 
+#    gdata \ 
+#    gdtools \ 
+#    ggforce \ 
+#    ggiraph \ 
+#    ggiraphExtra \ 
+#    ggpubr \ 
+#    ggrepel \ 
+#    ggsci \ 
+#    ggsignif \ 
+#    ggthemes \ 
+ #   gower \ 
     gplots \ 
+ #   grDevices \ 
     graphics \ 
-    grDevices \ 
     grid \ 
     gridExtra \ 
     gsubfn \ 
-    gtable \ 
     gtools \ 
-    haven \ 
-    highr \ 
-    hms \ 
-    htmltools \ 
-    htmlwidgets \ 
-    httpuv \ 
-    httr \ 
-    Icens \ 
     icensBKL \ 
-    ini \ 
     insight \ 
     installr \ 
-    interval \ 
     ipred \ 
-    ISLR \ 
     iterators \ 
-    jsonlite \ 
-    KernSmooth \ 
-    knitr \ 
-    labeling \ 
-    later \ 
-    lattice \ 
+#    lattice \
+#    latticeExtra \ 
     lava \ 
-    lazyeval \ 
     leaps \ 
-    lifecycle \ 
     lme4 \ 
-    logspline \ 
-    lubridate \ 
-    magrittr \ 
+#    logspline \ 
     maptools \ 
-    markdown \ 
-    MASS \ 
-    Matrix \ 
-    MatrixModels \ 
-    memoise \ 
     methods \ 
-    mgcv \ 
-    mime \ 
-    minqa \ 
-    mixAK \ 
-    MLEcens \ 
+#    mgcv \ 
+#    minqa \ 
+#    mixAK \ 
     mlr \ 
     mnormt \ 
-    ModelMetrics \ 
-    modelr \ 
-    moonBook \ 
-    munsell \ 
-    mvtnorm \ 
-    mycor \ 
-    nlme \ 
-    nloptr \ 
-    nnet \ 
-    nortest \ 
+#    moonBook \ 
+#    mvtnorm \ 
+#    mycor \ 
+#    nlme \ 
+#    nloptr \ 
+#    nnet \ 
+#    nortest \ 
     numDeriv \ 
-    officer \ 
-    openssl \ 
-    openxlsx \ 
+#    officer \ 
+#    openxlsx \ 
     parallel \ 
     parallelMap \ 
-    ParamHelpers \ 
-    pbkrtest \ 
-    perm \ 
-    pillar \ 
-    pkgbuild \ 
-    pkgconfig \ 
-    pkgload \ 
-    plogr \ 
-    plyr \ 
-    polyclip \ 
-    polynom \ 
-    PortfolioOptim \ 
-    ppcor \ 
-    praise \ 
-    prettyunits \ 
-    processx \ 
-    prodlim \ 
-    progress \ 
-    promises \ 
-    proto \ 
-    ps \ 
-    psych \ 
-    purrr \ 
+#    pbkrtest \ 
+#    perm \ 
+#    polyclip \ 
+#    polynom \ 
+#    ppcor \ 
+#    prodlim \ 
+#    proto \ 
+#    psych \ 
     qtl \ 
-    quantreg \ 
+#    quantreg \ 
     r2d3 \ 
-    R6 \ 
-    rappdirs \ 
-    rcmdcheck \ 
-    RColorBrewer \ 
-    Rcpp \ 
-    RcppEigen \ 
-    readr \ 
-    readxl \ 
-    recipes \ 
-    rematch \ 
-    remotes \ 
-    reprex \ 
+#    recipes \ 
     reshape \ 
-    reshape2 \ 
     reticulate \ 
-    rex \ 
-    rio \ 
-    rlang \ 
-    rmarkdown \ 
-    roxygen2 \ 
-    rpart \ 
-    rprojroot \ 
-    RSQLite \ 
-    rstudioapi \ 
-    Rsymphony \ 
-    Rtsne \ 
-    rversions \ 
-    rvest \ 
-    scales \ 
+#    rio \ 
+#    rpart \ 
     scatterplot3d \ 
-    selectr \ 
-    sessioninfo \ 
-    sf-master \ 
-    shiny \ 
-    shinyjs \ 
-    showtext \ 
-    showtextdb \ 
-    sjlabelled \ 
-    sjmisc \ 
-    smoothSurv \ 
-    sourcetools \ 
-    sp \ 
+#    sf-master \ 
+#    shinyjs \ 
+#    showtext \ 
+#    showtextdb \ 
+#    sjlabelled \ 
+#    sjmisc \ 
+#    smoothSurv \ 
+#    sp \ 
     sparklyr \ 
-    SparseM \ 
     spatial \ 
-    splines \ 
-    splitstackshape \ 
-    sqldf \ 
-    SQUAREM \ 
-    stats \ 
-    stats4 \ 
-    stringi \ 
-    stringr \ 
+#    splines \ 
+#    splitstackshape \ 
+#    sqldf \ 
+#    stats \ 
+#    stats4 \ 
     survival \ 
-    sys \ 
-    sysfonts \ 
-    systemfonts \ 
-    tcltk \ 
-    TeachingDemos \ 
+#    sysfonts \ 
+#    systemfonts \ 
+#    tcltk \ 
     tensorflow \ 
-    testthat \ 
-    tfruns \ 
-    tibble \ 
-    tidyr \ 
-    tidyselect \ 
-    tidyverse \ 
-    timeDate \ 
-    tinytex \ 
-    tools \ 
-    translations \ 
+#    tfruns \ 
+#    timeDate \ 
+#    tools \ 
+#    translations \ 
     tree \ 
-    tweenr \ 
-    units \ 
-    usethis \ 
-    utf8 \ 
-    utils \ 
-    uuid \ 
-    vctrs \ 
-    viridis \ 
-    viridisLite \ 
-    webshot \ 
-    whisker \ 
-    withr \ 
-    xfun \ 
-    xgboost \ 
-    XML \ 
-    xml2 \ 
-    xopen \ 
-    xtable \ 
-    yaml \ 
-    zeallot \ 
+#    tweenr \ 
+#    units \ 
+#    utils \ 
+#    viridis \ 
+#    webshot \ 
+#    xfun \ 
+#    zeallot \ 
     zip 
+
+RUN install2.r --error \
+    --deps TRUE \
+
+
+#Ja instalados
+#    BH \ 
+#    BiocManager \
+#    DBI \ 
+#    DT \ 
+#    R6 \ 
+#    RColorBrewer \ 
+#    RSQLite \ 
+#    Rcpp \ 
+#    XML \ 
+#    askpass \ 
+#    assertthat \ 
+#    backports \ 
+#    base64enc \ 
+#    bit \ 
+#    bit64 \ 
+#    bitops \ 
+#    blob \ 
+#    brew \ 
+#    broom \ 
+#    caTools \ 
+#    callr \ 
+#    cellranger \ 
+#    cli \ 
+#    clipr \ 
+#    clisymbols \ 
+#    colorspace \ 
+#    commonmark \ 
+#    covr \ 
+#    crayon \ 
+#    crosstalk \ 
+#    curl \ 
+#    data.table \ 
+#    dbplyr \ 
+#    desc \ 
+#    devtools \ 
+#    digest \ 
+#    dplyr \ 
+#    ellipsis \ 
+#    evaluate \ 
+#    fansi \ 
+#    farver \ 
+#    fastmap \ 
+#    forcats \ 
+#    fs \ 
+#    generics \ 
+#    ggplot2 \ 
+#    gh \ 
+#    git2r \ 
+#    glue \ 
+#    gtable \ 
+#    haven \ 
+#    highr \ 
+#    hms \ 
+#    htmltools \ 
+#    htmlwidgets \ 
+#    httpuv \ 
+#    httr \ 
+#    ini \ 
+#    interval \ 
+#    jsonlite \ 
+#    knitr \ 
+#    labeling \ 
+#    later \ 
+#    lazyeval \ 
+#    lifecycle \ 
+#    lubridate \ 
+#    magrittr \ 
+#    markdown \ 
+#    memoise \ 
+#    mime \ 
+#    modelr \ 
+#    munsell \ 
+#    openssl \ 
+#    pillar \ 
+#    pkgbuild \ 
+#    pkgconfig \ 
+#    pkgload \ 
+#    plogr \ 
+#    plyr \ 
+#    praise \ 
+#    prettyunits \ 
+#    processx \ 
+#    progress \ 
+#    promises \ 
+#    ps \ 
+#    purrr \ 
+#    rappdirs \ 
+#    rcmdcheck \ 
+#    readr \ 
+#    readxl \ 
+#    rematch \ 
+#    remotes \ 
+#    reprex \ 
+#    reshape2 \ 
+#    rex \ 
+#    rlang \ 
+#    rmarkdown \ 
+#    roxygen2 \ 
+#    rprojroot \ 
+#    rstudioapi \ 
+#    rversions \ 
+#    rvest \ 
+#    scales \ 
+#    selectr \ 
+#    sessioninfo \ 
+#    shiny \ 
+#    sourcetools \ 
+#    stringi \ 
+#    stringr \ 
+#    sys \ 
+#    testthat \ 
+#    tibble \ 
+#    tidyr \ 
+#    tidyselect \ 
+#    tidyverse \ 
+#    tinytex \ 
+#    usethis \ 
+#    utf8 \ 
+#    uuid \ 
+#    vctrs \ 
+#    viridisLite \ 
+#    whisker \ 
+#    withr \ 
+#    xgboost \ 
+#    xml2 \ 
+#    xopen \ 
+#    xtable \ 
+#    yaml \ 
+
